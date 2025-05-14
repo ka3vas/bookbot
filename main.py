@@ -1,15 +1,17 @@
 # from file_name_without_extension import function_name
-from stats import count_words, count_characters
+from stats import count_words, count_characters, sort_dict, generate_book_report
 
 def get_book_text(path):
 	with open(path) as file:
 		return file.read()
 
 def main():
-	text = get_book_text('books/frankenstein.txt')
+	path = 'books/frankenstein.txt'
+
+	text = get_book_text(path)
 	num_words = count_words(text)
-	num_char = count_characters(text)
-	print(f"{num_words} words found in the document")
-	print(num_char)
+	sorted_char = sort_dict(count_characters(text))
+	
+	generate_book_report(path, num_words, sorted_char)
 
 main()
